@@ -30,5 +30,6 @@
         'wizard/gstr_export_wizard.xml',
         'report/gst_export_report.xml'
 
-    ]
+    ],
+    'images': ['static/description/banner.png'],
 }
