@@ -8,6 +8,13 @@ class AccountTax(models.Model):
 
     tax_type = fields.Selection(selection=[('cgst', 'CGST'), ('sgst', 'SGST'), ('igst', 'IGST')], string="Tax Type")
 
+class PortCode(models.Model):
+    _name = 'port.code'
+
+    name = fields.Char('Port Name')
+    code = fields.Char('Port Code')
+
+
 class Partner(models.Model):
     _inherit = 'res.partner'
 
@@ -59,13 +66,33 @@ class CountryState(models.Model):
 
 ######### Customer Invoice Line ###########
 class AccountInvoice(models.Model):
-    _inherit = "account.invoice"
+    _inherit = 'account.invoice'
+
 
     elec_ref = fields.Char('Electronic Reference')
     gstin=fields.Char(related='partner_id.gstin',store=True)
     invoice_type=fields.Selection([('Regular','Regular'),('SEZ supplies with payment','SEZ supplies with payment'),('SEZ supplies without payment','SEZ supplies without payment'),
                                   ('Deemed Export','Deemed Export')],string="Invoice Type",default='Regular',required=True)
     e_commerce_operator = fields.Many2one('res.partner','E-Commerce Operator')
+    ship_bill_date = fields.Date('Shipping Bill Date')
+    ship_bill_no = fields.Char('Shipping Bill No.')
+    port_code = fields.Many2one('port.code')
+    export_invoice = fields.Boolean('Export Invoice')
+    export_type = fields.Selection([('WPAY','WPAY'),('WOPAY','WOPAY')])
+    flag_field = fields.Boolean('Flag')
+
+    @api.onchange('partner_id')
+
+    @api.multi
+
+    def partner_id_flag(self):
+
+        if self.partner_id.gstin_registered == True:
+
+            self.flag_field= True
+        else:
+            False
+
 
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'

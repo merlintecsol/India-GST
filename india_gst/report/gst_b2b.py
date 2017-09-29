@@ -37,7 +37,7 @@ class GstrB2BXlsx(ReportXlsx):
 
         ls = []
         for obj in invoice_id:
-            if obj.partner_id.gstin_registered == True:
+            if obj.flag_field == True and obj.export_invoice == False:
 
                 for rec in obj.invoice_line_ids:
                     if rec.invoice_line_tax_ids:
@@ -62,7 +62,7 @@ class GstrB2BXlsx(ReportXlsx):
                             ls.append([rec.tax_desc,rec.gst_amount])
 
         for obj in invoice_id:
-            if obj.partner_id.gstin_registered == True:
+            if obj.flag_field == True and obj.export_invoice == False:
                 for row in set(map(tuple, ls)):
                     r = 0
                     for rec in obj.invoice_line_ids:

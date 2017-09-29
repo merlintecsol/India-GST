@@ -93,14 +93,23 @@
                 <xpath expr="//field[@name='payment_term_id']" position="after">
                     <field name="elec_ref" />
                     <field name="invoice_type"/>
+                    <field name="flag_field" invisible="1"/>
+                    <field name="export_invoice"/>
                 </xpath>
                 <xpath expr="//field[@name='team_id']" position="after">
                     <field name="e_commerce_operator" />
+                    <field name="export_type" attrs="{'invisible': [('export_invoice','=',False)]}"/>
                 </xpath>
                <xpath expr="//field[@name='invoice_line_tax_ids']" position="after">
                    <field name="cgst" />
                    <field name="sgst" />
                    <field name="igst" />
+                </xpath>
+
+                <xpath expr="//page//group//field[@name='name']" position="after">
+                   <field name="ship_bill_no" attrs="{'invisible':[('invoice_type', '=', 'Regular')]}"/>
+                   <field name="ship_bill_date" attrs="{'invisible':[('invoice_type', '=', 'Regular')]}"/>
+                   <field name="port_code" attrs="{'invisible':[('invoice_type', '=', 'Regular')]}"/>
                 </xpath>
                 <!-- <xpath expr="//field[@name='invoice_line_tax_ids']" position="attributes"> -->
                 <!--     <attribute name="invisible">True</attribute> -->

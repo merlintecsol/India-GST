@@ -4,6 +4,7 @@
     'name': 'India-GST',
     'description': "Goods & Service-Tax.",
     'version': '1.0.1',
+    'category': 'Accounting',
     'author': 'Merlin Tecsol Pvt. Ltd.',
     'website': 'http://www.merlintecsol.com',
     'license': 'AGPL-3',
@@ -26,6 +27,8 @@
         'report/gst_b2cs_report.xml',
         'wizard/gstr_hsn_wizard.xml',
         'report/gst_hsn_report.xml',
+        'wizard/gstr_export_wizard.xml',
+        'report/gst_export_report.xml'
 
     ]
 }

@@ -32,7 +32,7 @@ class GstrB2CSXlsx(ReportXlsx):
 
         ls = []
         for obj in invoice_id:
-             if obj.partner_id.gstin_registered == False and ((obj.amount_total <= 250000 and obj.partner_id.property_account_position_id.name == 'Inter State') or obj.partner_id.property_account_position_id.name == 'Intra State'):
+             if obj.flag_field == False and (((obj.amount_total <= 250000 and obj.partner_id.property_account_position_id.name == 'Inter State') or obj.partner_id.property_account_position_id.name == 'Intra State') and obj.export_invoice == False):
                 for rec in obj.invoice_line_ids:
                     if rec.invoice_line_tax_ids:
                         if rec.tax_desc == 'gst' and rec.gst_amount == 5:
@@ -57,7 +57,7 @@ class GstrB2CSXlsx(ReportXlsx):
         pot = []
         check = []
         for obj in invoice_id:
-            if obj.partner_id.gstin_registered == False and ((obj.amount_total <= 250000 and obj.partner_id.property_account_position_id.name == 'Inter State') or obj.partner_id.property_account_position_id.name == 'Intra State'):
+            if obj.flag_field == False and (((obj.amount_total <= 250000 and obj.partner_id.property_account_position_id.name == 'Inter State') or obj.partner_id.property_account_position_id.name == 'Intra State') and obj.export_invoice == False):
                 if rec.invoice_line_tax_ids:
                     for row in set(map(tuple, ls)):
                         r = 0
