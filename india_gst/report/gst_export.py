@@ -1,4 +1,24 @@
 # -*- coding: utf-8 -*-
+##############################################################################
+#
+#    India-GST
+#
+#    Merlin Tecsol Pvt. Ltd.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
 from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
 import xlsxwriter
 from datetime import date
@@ -38,25 +58,24 @@ class GstrExportXlsx(ReportXlsx):
             if obj.export_invoice == True:
 
                 for rec in obj.invoice_line_ids:
-                    if rec.invoice_line_tax_ids:
-                        if rec.tax_desc == 'gst' and rec.gst_amount == 5:
-                            ls.append([rec.tax_desc,rec.gst_amount])
-                        if rec.tax_desc == 'gst' and rec.gst_amount == 12:
-                            ls.append([rec.tax_desc,rec.gst_amount])
-                        if rec.tax_desc == 'gst' and rec.gst_amount == 18:
-                            ls.append([rec.tax_desc,rec.gst_amount])
-                        if rec.tax_desc == 'gst' and rec.gst_amount == 28:
-                            ls.append([rec.tax_desc,rec.gst_amount])
-                        if rec.tax_desc == 'igst' and rec.gst_amount == 5:
-                            ls.append([rec.tax_desc,rec.gst_amount])
-                        if rec.tax_desc == 'igst' and rec.gst_amount == 12:
-                            ls.append([rec.tax_desc,rec.gst_amount])
-                        if rec.tax_desc == 'igst' and rec.gst_amount == 18:
-                            ls.append([rec.tax_desc,rec.gst_amount])
-                        if rec.tax_desc == 'igst' and rec.gst_amount == 28:
-                            ls.append([rec.tax_desc,rec.gst_amount])
-                        if rec.tax_desc == 'none' and rec.gst_amount == 0:
-                            ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'gst' and rec.gst_amount == 5:
+                        ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'gst' and rec.gst_amount == 12:
+                        ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'gst' and rec.gst_amount == 18:
+                        ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'gst' and rec.gst_amount == 28:
+                        ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'igst' and rec.gst_amount == 5:
+                        ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'igst' and rec.gst_amount == 12:
+                        ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'igst' and rec.gst_amount == 18:
+                        ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'igst' and rec.gst_amount == 28:
+                        ls.append([rec.tax_desc,rec.gst_amount])
+                    if rec.tax_desc == 'none' and rec.gst_amount == 0:
+                        ls.append([rec.tax_desc,rec.gst_amount])
 
 
         for obj in invoice_id:
@@ -64,30 +83,27 @@ class GstrExportXlsx(ReportXlsx):
                 for row in set(map(tuple, ls)):
                     r = 0
                     for rec in obj.invoice_line_ids:
-                        if rec.invoice_line_tax_ids:
-                            if rec.tax_desc == row[0] and rec.gst_amount == row[1]:
-                                r+=rec.price_subtotal
-                        if r == 0:
-                            pass
-                        else:
-                            line = re.sub('[-]', '', obj.date_invoice)
-                            year = int(line[:4])
-                            mon = int(line[4:6])
-                            day = int(line[6:8])
+                        if rec.tax_desc == row[0] and rec.gst_amount == row[1]:
+                            r+=rec.price_subtotal
+                    if r == 0:
+                        pass
+                    else:
+                        line = re.sub('[-]', '', obj.date_invoice)
+                        year = int(line[:4])
+                        mon = int(line[4:6])
+                        day = int(line[6:8])
 
+                        worksheet.write('A%s' %(new_row), obj.export_type)
+                        worksheet.write('B%s' %(new_row), obj.number)
+                        worksheet.write('C%s' %(new_row), date(year,mon,day).strftime('%d %b %Y'))
+                        worksheet.write('D%s' %(new_row), obj.amount_total)
+                        worksheet.write('E%s' %(new_row), obj.port_code.name)
+                        worksheet.write('F%s' %(new_row), obj.ship_bill_no)
+                        worksheet.write('G%s' %(new_row), obj.ship_bill_date)
+                        worksheet.write('H%s' %(new_row), row[1])
+                        worksheet.write('I%s' %(new_row), r)
 
-                            worksheet.write('A%s' %(new_row), obj.export_type)
-                            worksheet.write('B%s' %(new_row), obj.number)
-                            worksheet.write('C%s' %(new_row), date(year,mon,day).strftime('%d %b %Y'))
-                            worksheet.write('D%s' %(new_row), obj.amount_total)
-                            worksheet.write('E%s' %(new_row), obj.port_code.name)
-                            worksheet.write('F%s' %(new_row), obj.ship_bill_no)
-                            worksheet.write('G%s' %(new_row), obj.ship_bill_date)
-                            worksheet.write('H%s' %(new_row), row[1])
-                            worksheet.write('I%s' %(new_row), r)
-
-                            new_row+=1
-
+                        new_row+=1
 
 GstrExportXlsx('report.account.gstr.export.xlsx',
             'account.invoice')

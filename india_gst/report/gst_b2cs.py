@@ -1,11 +1,30 @@
 # -*- coding: utf-8 -*-
+##############################################################################
+#
+#    India-GST
+#
+#    Merlin Tecsol Pvt. Ltd.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
 from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
 import xlsxwriter
 from datetime import date
 from datetime import datetime, date
 class GstrB2CSXlsx(ReportXlsx):
     def generate_xlsx_report(self, workbook, data, invoices):
-
 
         invoice_obj = self.env['check.date'].search([])[-1]
         invoice_id = self.env['account.invoice'].search([
@@ -28,7 +47,6 @@ class GstrB2CSXlsx(ReportXlsx):
         worksheet.write('F%s' %(row), 'E-Commerce GSTIN')
 
         partner_state = self.env.user.company_id.partner_id.state_id.name
-
 
         ls = []
         for obj in invoice_id:
@@ -94,7 +112,5 @@ class GstrB2CSXlsx(ReportXlsx):
             worksheet.write('F%s' %(new_row), d)
 
             new_row+=1
-
-
 
 GstrB2CSXlsx('report.account.gstr.b2cs.xlsx','account.invoice')

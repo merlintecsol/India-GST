@@ -1,8 +1,27 @@
 # -*- coding: utf-8 -*-
+##############################################################################
+#
+#    India-GST
+#
+#    Merlin Tecsol Pvt. Ltd.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
 from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
 import xlsxwriter
-from datetime import date
-from datetime import datetime, date
+import datetime
 import odoo.addons.decimal_precision as dp
 import re
 class GstrB2CLXlsx(ReportXlsx):
@@ -17,6 +36,7 @@ class GstrB2CLXlsx(ReportXlsx):
 
         worksheet = workbook.add_worksheet('GSTR B2CL')
         worksheet.set_column('A:H',15)
+        date_format = workbook.add_format({'num_format': 'd-mmm-yyyy'})
 
         row = 1
         col = 0
@@ -69,15 +89,10 @@ class GstrB2CLXlsx(ReportXlsx):
                         if r == 0:
                             pass
                         else:
-                            line = re.sub('[-]', '', obj.date_invoice)
-                            year = int(line[:4])
-                            mon = int(line[4:6])
-                            day = int(line[6:8])
-                            print '++++++++++++++++',obj.partner_id.name
-
+                            inv_date = datetime.datetime.strptime(obj.date_invoice, '%Y-%m-%d')
 
                             worksheet.write('A%s' %(new_row), obj.number)
-                            worksheet.write('B%s' %(new_row), date(year,mon,day).strftime('%d %b %Y'))
+                            worksheet.write('B%s' %(new_row), inv_date,date_format)
                             worksheet.write('C%s' %(new_row), obj.amount_total)
                             worksheet.write_rich_string('D%s' %(new_row), obj.partner_id.state_id.state_code + "-" + obj.partner_id.state_id.name)
                             worksheet.write('E%s' %(new_row), row[1])
@@ -86,8 +101,6 @@ class GstrB2CLXlsx(ReportXlsx):
                             worksheet.write('H%s' %(new_row), obj.partner_id.e_commerce_tin)
 
                             new_row+=1
-
-
 
 GstrB2CLXlsx('report.account.gstr.b2cl.xlsx',
             'account.invoice')

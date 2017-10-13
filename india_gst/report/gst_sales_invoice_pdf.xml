@@ -106,12 +106,12 @@
 
                             <tr>
                                 <td colspan="1"><b>GSTIN No.:</b></td>
-                                <td colspan="6"><t t-esc="o.partner_id.vat"/></td>
+                                <td colspan="6"><t t-esc="o.partner_id.gstin"/></td>
                                 <td colspan="2"><b>GSTIN No:</b></td>
                                 <td colspan="6">
-                                    <t t-esc="o.partner_shipping_id.vat"/>
+                                    <t t-esc="o.partner_shipping_id.gstin"/>
                                     <t t-if="not o.partner_shipping_id">
-                                        <t t-esc="o.partner_id.vat"/>
+                                        <t t-esc="o.partner_id.gstin"/>
                                     </t>
                                 </td>
                             </tr>

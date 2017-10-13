@@ -1,4 +1,24 @@
 # -*- coding: utf-8 -*-
+##############################################################################
+#
+#    India-GST
+#
+#    Merlin Tecsol Pvt. Ltd.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
 from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
 import xlsxwriter
 from datetime import date
@@ -78,7 +98,6 @@ class GstrHsnXlsx(ReportXlsx):
             worksheet.write('I%s' %(new_row), sgst)
 
             new_row+=1
-
 
 GstrHsnXlsx('report.account.gstr.hsn.xlsx',
             'account.invoice')

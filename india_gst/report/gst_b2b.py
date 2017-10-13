@@ -1,8 +1,27 @@
 # -*- coding: utf-8 -*-
+##############################################################################
+#
+#    India-GST
+#
+#    Merlin Tecsol Pvt. Ltd.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
 from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
 import xlsxwriter
 import datetime
-from datetime import datetime, date
 import odoo.addons.decimal_precision as dp
 import re
 class GstrB2BXlsx(ReportXlsx):
@@ -16,6 +35,7 @@ class GstrB2BXlsx(ReportXlsx):
 
         worksheet = workbook.add_worksheet('GSTR B2B')
         worksheet.set_column('A:K',15)
+        date_format = workbook.add_format({'num_format': 'd-mmm-yyyy'})
 
         row = 1
         col = 0
@@ -72,15 +92,10 @@ class GstrB2BXlsx(ReportXlsx):
                         if r == 0:
                             pass
                         else:
-                            line = re.sub('[-]', '', obj.date_invoice)
-                            year = int(line[:4])
-                            mon = int(line[4:6])
-                            day = int(line[6:8])
-
                             worksheet.write('A%s' %(new_row), obj.partner_id.gstin)
                             worksheet.write('B%s' %(new_row), obj.number)
-                            inv_date = obj.date_invoice
-                            worksheet.write('C%s' %(new_row), date(year,mon,day).strftime('%d %b %Y'))
+                            inv_date = datetime.datetime.strptime(obj.date_invoice, '%Y-%m-%d')
+                            worksheet.write('C%s' %(new_row), inv_date, date_format)
                             worksheet.write('D%s' %(new_row), obj.amount_total)
                             if obj.partner_id.state_id:
                                 worksheet.write_rich_string('E%s' %(new_row), obj.partner_id.state_id.state_code + "-" + obj.partner_id.state_id.name)
