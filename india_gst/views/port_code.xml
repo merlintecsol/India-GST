@@ -28,7 +28,4 @@
         parent="account.menu_finance_configuration"
         sequence="1"
         groups="account.group_account_invoice"/>
-
-
-
 </odoo>

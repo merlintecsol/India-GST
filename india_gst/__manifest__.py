@@ -48,7 +48,8 @@
         'wizard/gstr_hsn_wizard.xml',
         'report/gst_hsn_report.xml',
         'wizard/gstr_export_wizard.xml',
-        'report/gst_export_report.xml'
+        'report/gst_export_report.xml',
+        'views/port_code.xml',
 
     ],
     'images': ['static/description/banner.png'],
