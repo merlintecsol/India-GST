@@ -1,0 +1,37 @@
+id,state_code,country_id/id,code,name
+base.state_in_an,35,base.in,GJ,Andaman and Nicobar
+base.state_in_ap,28,base.in,AP,Andhra Pradesh
+base.state_in_ar,12,base.in,AR,Arunachal Pradesh
+base.state_in_as,18,base.in,AS,Assam
+base.state_in_br,10,base.in,BR,Bihar
+base.state_in_cg,22,base.in,CG,Chattisgarh
+base.state_in_ch,4,base.in,CH,Chandigarh
+base.state_in_dd,25,base.in,DD,Daman and Diu
+base.state_in_dl,7,base.in,DL,Delhi
+base.state_in_dn,26,base.in,DN,Dadra and Nagar Haveli
+base.state_in_ga,30,base.in,GA,Goa
+base.state_in_gj,24,base.in,GJ,Gujarat
+base.state_in_hp,2,base.in,HP,Himachal Pradesh
+base.state_in_hr,6,base.in,HR,Haryana
+base.state_in_jh,20,base.in,JH,Jharkhand
+base.state_in_jk,1,base.in,JK,Jammu and Kashmir
+base.state_in_ka,29,base.in,KA,Karnataka
+base.state_in_kl,32,base.in,KL,Kerala
+base.state_in_ld,31,base.in,LD,Lakshadweep
+base.state_in_mh,27,base.in,MH,Maharashtra
+base.state_in_ml,17,base.in,ML,Meghalaya
+base.state_in_mn,14,base.in,MN,Manipur
+base.state_in_mp,23,base.in,MP,Madhya Pradesh
+base.state_in_mz,15,base.in,MZ,Mizoram
+base.state_in_nl,13,base.in,NL,Nagaland
+base.state_in_or,21,base.in,OR,Orissa
+base.state_in_pb,3,base.in,PB,Punjab
+base.state_in_py,34,base.in,PY,Puducherry
+base.state_in_rj,8,base.in,RJ,Rajasthan
+base.state_in_sk,11,base.in,SK,Sikkim
+base.state_in_tn,33,base.in,TN,Tamil Nadu
+base.state_in_tr,16,base.in,TR,Tripura
+base.state_in_ts,36,base.in,TS,Telangana
+base.state_in_uk,5,base.in,UK,Uttarakhand
+base.state_in_up,9,base.in,UP,Uttar Pradesh
+base.state_in_wb,19,base.in,WB,West Bengal
