@@ -27,6 +27,7 @@
     'category': 'Accounting',
     'author': 'Merlin Tecsol Pvt. Ltd.',
     'website': 'http://www.merlintecsol.com',
+    'summary': 'Indian GST Reports',
     'license': 'AGPL-3',
     'depends': ['sale','purchase','account','report_xlsx'],
     'data': [
