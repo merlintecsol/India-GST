@@ -29,7 +29,5 @@
         'report/gst_export_report.xml',
         'views/port_code.xml',
         'wizard/gstr_export_wizard.xml',
-
-
     ]
 }

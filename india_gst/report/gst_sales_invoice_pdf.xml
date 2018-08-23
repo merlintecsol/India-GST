@@ -17,9 +17,9 @@
                                     <b> Company GSTIN No: </b>
                                     <!-- Tax Is Payable On Reverse Charge: (Yes/No)<br/> -->
                                 </td>
-                                <td colspan="13">
-                                    <span t-field="o.company_id.gstin"/>
-                                </td>
+                                <!-- <td colspan="13"> -->
+                                <!--     <span t-field="o.company_id.gstin"/> -->
+                                <!-- </td> -->
                             </tr>
 
                             <tr>
@@ -61,8 +61,8 @@
                                 <td colspan="6"><t t-esc="o.partner_id.name"/></td>
                                 <td colspan="2"><b>Name:</b></td>
                                 <td colspan="6">
-                                    <t t-esc="o.partner_shipping_id.name"/>
-                                    <t t-if="not o.partner_shipping_id">
+                                    <t t-esc="o.partner_id.name"/>
+                                    <t t-if="not o.partner_id">
                                         <t t-esc="o.partner_id.name"/>
                                     </t>
                                 </td>
@@ -73,8 +73,8 @@
                                 <td colspan="6"><t t-esc="o.partner_id.street"/><span>,</span><t t-esc="o.partner_id.street2"/><span>,</span><t t-esc="o.partner_id.city"/></td>
                                 <td colspan="2"><b>Address::</b></td>
                                 <td colspan="6">
-                                    <t t-esc="o.partner_shipping_id.street"/><span>,</span><t t-esc="o.partner_shipping_id.street2"/><span>,</span><t t-esc="o.partner_shipping_id.city"/>
-                                    <t t-if="not o.partner_shipping_id">
+                                    <t t-esc="o.partner_id.street"/><span>,</span><t t-esc="o.partner_id.street2"/><span>,</span><t t-esc="o.partner_id.city"/>
+                                    <t t-if="not o.partner_id">
                                         <t t-esc="o.partner_id.street"/><span>,</span><t t-esc="o.partner_id.street2"/><span>,</span><t t-esc="o.partner_id.city"/>
                                     </t>
                                 </td>
@@ -85,8 +85,8 @@
                                 <td colspan="6"><t t-esc="o.partner_id.state_id.name"/><span>,</span><t t-esc="o.partner_id.country_id.name"/></td>
                                 <td colspan="2"><b>State/Country:</b></td>
                                 <td colspan="6">
-                                    <t t-esc="o.partner_shipping_id.state_id.name"/><span>,</span><t t-esc="o.partner_shipping_id.country_id.name"/>
-                                    <t t-if="not o.partner_shipping_id">
+                                    <t t-esc="o.partner_id.state_id.name"/><span>,</span><t t-esc="o.partner_id.country_id.name"/>
+                                    <t t-if="not o.partner_id">
                                         <t t-esc="o.partner_id.state_id.name"/><span>,</span><t t-esc="o.partner_id.country_id.name"/>
                                     </t>
                                 </td>
@@ -97,8 +97,8 @@
                                 <td colspan="6"><t t-esc="o.partner_id.state_id.state_code"/></td>
                                 <td colspan="2"><b>State Code:</b></td>
                                 <td colspan="6">
-                                    <t t-esc="o.partner_shipping_id.state_id.state_code"/>
-                                    <t t-if="not o.partner_shipping_id">
+                                    <t t-esc="o.partner_id.state_id.state_code"/>
+                                    <t t-if="not o.partner_id">
                                         <t t-esc="o.partner_id.state_id.state_code"/>
                                     </t>
                                 </td>
@@ -109,8 +109,8 @@
                                 <td colspan="6"><t t-esc="o.partner_id.gstin"/></td>
                                 <td colspan="2"><b>GSTIN No:</b></td>
                                 <td colspan="6">
-                                    <t t-esc="o.partner_shipping_id.gstin"/>
-                                    <t t-if="not o.partner_shipping_id">
+                                    <t t-esc="o.partner_id.gstin"/>
+                                    <t t-if="not o.partner_id">
                                         <t t-esc="o.partner_id.gstin"/>
                                     </t>
                                 </td>
@@ -300,4 +300,3 @@
 
     </data>
 </openerp>
-

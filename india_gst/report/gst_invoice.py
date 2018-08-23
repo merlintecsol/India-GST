@@ -103,27 +103,27 @@ class InvoiceXlsx(ReportXlsx):
             worksheet.merge_range('A%s:D%s' %(new_row + 6, new_row + 6), 'Name', merge_format2)
             worksheet.merge_range('E%s:I%s' %(new_row + 6, new_row + 6), obj.partner_id.name, merge_format_sim)
             worksheet.merge_range('J%s:M%s' %(new_row + 6, new_row + 6), 'Name', merge_format2)
-            worksheet.merge_range('N%s:R%s' %(new_row + 6, new_row + 6), obj.partner_shipping_id.name, merge_format_sim)
+            worksheet.merge_range('N%s:R%s' %(new_row + 6, new_row + 6), obj.partner_id.name, merge_format_sim)
 
             worksheet.merge_range('A%s:D%s' %(new_row + 7, new_row + 7), 'Address', merge_format2)
             worksheet.merge_range('E%s:I%s' %(new_row + 7, new_row + 7), obj.partner_id.street + obj.partner_id.street2 + obj.partner_id.city, merge_format_sim)
             worksheet.merge_range('J%s:M%s' %(new_row + 7, new_row + 7), 'Address', merge_format2)
-            worksheet.merge_range('N%s:R%s' %(new_row + 7, new_row + 7), obj.partner_shipping_id.street + obj.partner_shipping_id.street2 + obj.partner_shipping_id.city, merge_format_sim)
+            worksheet.merge_range('N%s:R%s' %(new_row + 7, new_row + 7), obj.partner_id.street + obj.partner_id.street2 + obj.partner_id.city, merge_format_sim)
 
             worksheet.merge_range('A%s:D%s' %(new_row + 8, new_row + 8), 'State', merge_format2)
             worksheet.merge_range('E%s:I%s' %(new_row + 8, new_row + 8), obj.partner_id.state_id.name, merge_format_sim)
             worksheet.merge_range('J%s:M%s' %(new_row + 8, new_row + 8), 'State', merge_format2)
-            worksheet.merge_range('N%s:R%s' %(new_row + 8, new_row + 8), obj.partner_shipping_id.state_id.name, merge_format_sim)
+            worksheet.merge_range('N%s:R%s' %(new_row + 8, new_row + 8), obj.partner_id.state_id.name, merge_format_sim)
 
             worksheet.merge_range('A%s:D%s' %(new_row + 9, new_row + 9), 'State Code', merge_format2)
             worksheet.merge_range('E%s:I%s' %(new_row + 9, new_row + 9), obj.partner_id.state_id.state_code, merge_format_sim)
             worksheet.merge_range('J%s:M%s' %(new_row + 9, new_row + 9), 'State Code', merge_format2)
-            worksheet.merge_range('N%s:R%s' %(new_row + 9, new_row + 9), obj.partner_shipping_id.state_id.state_code, merge_format_sim)
+            worksheet.merge_range('N%s:R%s' %(new_row + 9, new_row + 9), obj.partner_id.state_id.state_code, merge_format_sim)
 
             worksheet.merge_range('A%s:D%s' %(new_row + 10, new_row + 10), 'GSTIN', merge_format2)
             worksheet.merge_range('E%s:I%s' %(new_row + 10, new_row + 10), obj.partner_id.vat, merge_format_sim)
             worksheet.merge_range('J%s:M%s' %(new_row + 10, new_row + 10), 'GSTIN', merge_format2)
-            worksheet.merge_range('N%s:R%s' %(new_row + 10, new_row + 10), obj.partner_shipping_id.vat, merge_format_sim)
+            worksheet.merge_range('N%s:R%s' %(new_row + 10, new_row + 10), obj.partner_id.vat, merge_format_sim)
             worksheet.merge_range('A%s:R%s' %(new_row + 10, new_row + 11), '', merge_format2)
 
             worksheet.merge_range('A%s:A%s' %(new_row + 12, new_row + 13), 'No', merge_format)
